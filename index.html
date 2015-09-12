@@ -1,0 +1,1831 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Run! Build! Generate! Javascript tools overview</title>
+
+		<meta name="description" content="Presentation on a popular topic">
+		<meta name="author" content="https://github.com/XOP">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/solarized_light.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+            <!-- go to speaker view by 'S' -->
+            <!-- pause by 'B' -->
+
+			<div class="slides">
+
+                <!-- Intro -->
+                <!-- ---------------------------------------------------------------------------------------------- -->
+
+                <section>
+                    <h1>Run! Build! Generate!</h1>
+
+                    <h2>Javascript tools overview</h2>
+                </section>
+
+                <section>
+                    <h2>What's this all about?</h2>
+                </section>
+
+                <section data-background="img/swiss2.jpg">
+                    <h1 class="background">Expectations</h1>
+                </section>
+
+                <section data-background="img/swiss.jpg">
+                    <h1 class="background">Reality</h1>
+                </section>
+
+                <section>
+                    <h2>What it is <span class="fragment highlight-red">not</span> about?</h2>
+                </section>
+
+                <section data-background="img/analytics.jpg">
+                    <h1 class="background">This</h1>
+                </section>
+
+                <section data-background="img/comparison.jpg">
+                    <h1 class="background">And this</h1>
+                </section>
+
+                <section>
+                    <h1>Let's get started!</h1>
+                </section>
+
+
+                <!-- Task runners -->
+                <!-- ---------------------------------------------------------------------------------------------- -->
+
+                <section class="background-splash">
+                    <h1>Task runners</h1>
+
+					<div class="fragment roll-in">
+						and something more
+					</div>
+                </section>
+
+
+				<!-- Grunt -->
+				<section class="background-even" id="grunt">
+                    <section>
+                        <h2>Grunt</h2>
+
+                        <img width="250" src="img/grunt.png" alt="Grunt"/>
+
+                        <blockquote>
+                            The JavaScript Task Runner
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://gruntjs.com/">Home</a></h3>
+                        <h3><a href="http://gruntjs.com/getting-started">Docs</a></h3>
+                        <h3><a href="https://github.com/gruntjs/">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>~4400 plugins</li>
+                            <li>~9500 Github stars</li>
+                            <li><strong>First automation tool of such sort</strong></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Tons of plugins</h2>
+                        <div class="fragment roll-in">like, literally</div>
+                        <strong><img width="80%" src="img/grunt-ex-1.png" alt="Grunt Plugins"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Principles</h2>
+
+                        <h3 class="fragment roll-in">Works with files</h3>
+                        <h3 class="fragment roll-in">Config over code</h3>
+                        <h3 class="fragment roll-in">Automate everything!</h3>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install -g grunt-cli
+npm install grunt --save-dev
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Example</h2>
+
+                        <div><code>Gruntfile.js</code></div>
+
+                        <pre><code>
+module.exports = function(grunt) {
+  grunt.initConfig({
+    jshint: {
+      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      options: { ... }
+    },
+    watch: {
+      files: ['<%= jshint.files %>'],
+      tasks: ['jshint']
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('default', ['jshint']);
+};
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+
+                        <h3 class="fragment roll-in">Active developing freezed in 2014</h3>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Sometimes Grunt - is all you need to automate your development routine. <br/>
+                            Easy start, reliable solutions, all this. <br/>
+                            Do not expect a miracle from it though, in the end, it's just a beast.
+                        </blockquote>
+                    </section>
+				</section>
+				<!-- /Grunt -->
+
+
+				<!-- Gulp -->
+				<section class="background-even" id="gulp">
+                    <section>
+                        <h2>Gulp</h2>
+
+                        <img width="250" src="img/gulp.png" alt="Gulp"/>
+
+                        <blockquote>
+                            Automate and enhance your workflow
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://gulpjs.com/">Home</a></h3>
+                        <h3><a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Docs</a></h3>
+                        <h3><a href="https://github.com/gulpjs/gulp">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>~1500 plugins</li>
+                            <li>~13000 Github stars</li>
+                            <li>And yes, easy, efficient and high-quality</li>
+                            <li class="fragment roll-in">...task-runner</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Principles</h2>
+
+                        <h3 class="fragment roll-in">Streaming</h3>
+                        <h3 class="fragment roll-in">Config agnostic</h3>
+                        <h3 class="fragment roll-in">Atomic plugins</h3>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install --global gulp
+npm install --save-dev gulp
+                        </code></pre>
+
+                        <h3><a href="https://github.com/gulpjs/gulp/tree/master/docs/recipes">Recipes</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Example</h2>
+
+                        <div><code>gulpfile.js</code></div>
+
+                        <pre><code>
+'use strict';
+
+var gulp = require('gulp');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+
+var DEST = 'build/';
+
+gulp.task('default', function() {
+  return gulp.src('foo.js')
+    // This will output the non-minified version
+    .pipe(gulp.dest(DEST))
+    // This will minify and rename to foo.min.js
+    .pipe(uglify())
+    .pipe(rename({ extname: '.min.js' }))
+    .pipe(gulp.dest(DEST));
+});
+                        </code></pre>
+                    </section>
+
+                    <section data-background="img/gulp-ex-2.jpg">
+                        <h1 class="background">Heritage</h1>
+
+                    </section>
+
+                    <section>
+                        <h2>Gulp of Grunt</h2>
+
+                        <strong><img width="60%" src="img/gulp-ex-1.png" alt="Gulp Grunt"/></strong>
+                    </section>
+
+                    <section>
+                        <strong><img width="300" src="img/gulp-ex-3.png" alt="Gulp Grunt"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+
+                        <h3 class="fragment">?</h3>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            If you need task-runner and love Grunt,<br/>
+                            but prefer <span class="fragment highlight-red">Code</span> over <span class="fragment highlight-blue">Configuration</span>
+                            <br/>
+                            Gulp is definitely your cup of tea!
+                        </blockquote>
+                    </section>
+				</section>
+				<!-- /Gulp -->
+
+
+				<!-- Brunch -->
+				<section class="background-even" id="brunch">
+                    <section>
+                        <h2>Brunch</h2>
+
+                        <img width="250" src="img/brunch.png" alt="Brunch"/>
+
+                        <blockquote>
+                            Ultra-fast HTML5 build tool
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://brunch.io/">Home</a></h3>
+                        <h3><a href="https://github.com/brunch/brunch/tree/stable/docs">Docs</a></h3>
+                        <h3><a href="https://github.com/brunch/brunch/">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Competitors</h2>
+
+                        <div>
+                            <img width="30%" src="img/brunch.png" alt="Brunch"/><!--
+                            --><img width="30%" src="img/grunt.png" alt="Grunt"/><!--
+                            --><img width="30%" src="img/gulp.png" alt="Gulp"/>
+                        </div>
+
+                        <hr/>
+
+                        <p><a href="http://brunch.io/compare.html">Comparison table</a></p>
+                    </section>
+
+                    <section data-background="img/different.jpg">
+                        <h1 class="background fragment roll-in">Different by design</h1>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Scripts, templates, styles compilation and linting</li>
+                            <li>Common JS / AMD modules</li>
+                            <li>Source maps for concatenated files</li>
+                            <li>Minified output</li>
+                            <li>Watch for changes</li>
+                            <li>CLI</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install -g brunch
+brunch new [skeleton-URL] [optional-output-dir]
+brunch watch --server
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2><a href="http://brunch.io/skeletons.html">Skeletons</a></h2>
+
+                        <pre><code>
+brunch new [skeleton-URL] [optional-output-dir]
+# Example from GitHub
+brunch new gh:brunch/dead-simple
+# Example from a full URL
+brunch new https://github.com/paulmillr/brunch-with-chaplin
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Skeleton list</h2>
+
+                        <strong><img src="img/brunch-ex-1.png" alt="Brunch skeletons"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Project structure</h2>
+
+                        <strong><img src="img/brunch-ex-2.png" alt="Brunch Example"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Typical config</h2>
+
+                        <div><code>
+                            config.coffee
+                        </code></div>
+
+                        <pre><code>
+exports.config =
+  # See http://brunch.io/#documentation for docs.
+  files:
+    javascripts:
+      joinTo:
+        'javascripts/app.js': /^app/
+        'javascripts/vendor.js': /^(?!app)/
+
+    stylesheets:
+      joinTo: 'stylesheets/app.css'
+
+    templates:
+      joinTo: 'javascripts/app.js'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li>It is <strong>not</strong> just task-runner</li>
+                            <li>Questionable skeleton list</li>
+                            <li>Coffescript + jade intensively used</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            If you seem to be tired of Grunt and Gulp and crave for hipster tools to build your next project - take a look at Brunch!
+                            <br/>
+                            It could become a long-term relationship.
+                        </blockquote>
+                    </section>
+				</section>
+				<!-- \Brunch -->
+
+
+				<!-- Asset pipeline -->
+				<!-- ---------------------------------------------------------------------------------------------- -->
+
+				<section class="background-splash">
+					<h1>Asset pipeline</h1>
+
+				</section>
+
+                <section class="background-splash">
+                    <h2>Features</h2>
+
+                    <ul>
+                        <li class="fragment roll-in">Concat/minify CSS/JS</li>
+                        <li class="fragment roll-in">Preprocessing</li>
+                        <li class="fragment roll-in">MD5 fingerprint</li>
+                    </ul>
+
+
+                    <div class="fragment roll-in">
+                        <hr/>
+                        <p>
+                            <a href="http://guides.rubyonrails.org/asset_pipeline.html">RoR Guide</a>
+                        </p>
+                    </div>
+                </section>
+
+
+				<!-- Mincer -->
+				<section class="background-odd" id="mincer">
+
+					<section>
+						<h2>Mincer</h2>
+
+						<p>
+							JS port of Sprockets by <a href="https://github.com/nodeca">Nodeca</a>
+						</p>
+
+						<img width="250" src="img/mincer.png" alt="Mincer"/>
+						<div class="fragment roll-in">
+							<i><small>(not real logo)</small></i>
+						</div>
+
+					</section>
+
+					<section>
+						<h2>Sprockets</h2>
+
+						<img width="250" src="img/sprockets.png" alt="Sprockets"/>
+						<div class="fragment roll-in">
+							<i><small>(not real logo)</small></i>
+						</div>
+					</section>
+
+                    <section>
+                        <h2>Sprockets</h2>
+
+                        <blockquote>
+                            <span class="fragment highlight-blue">Sprockets</span> is a <span class="fragment highlight-red">Ruby library</span> for compiling and serving web assets. It features declarative dependency management for JavaScript and CSS assets, as well as a powerful preprocessor pipeline that allows you to write assets in languages like CoffeeScript, Sass, SCSS and LESS.
+                        </blockquote>
+
+                        <p class="fragment roll-in">Check out <a href="https://middlemanapp.com/advanced/asset_pipeline/">Middleman</a> for examples and docs</p>
+                    </section>
+
+					<section>
+						<h2>Mincer</h2>
+
+						<ul>
+							<li>Declarative dependency management</li>
+							<li>Supports CoffeeScript, LESS, Stylus, ...</li>
+							<li><strong>Sourcemaps support</strong></li>
+							<li><strong>Macros support (nice alternative to EJS)</strong></li>
+						</ul>
+
+					</section>
+
+                    <section>
+                        <h2>Using via CLI</h2>
+
+                        <pre><code>
+$ mincer --include assets/javascripts \
+         --include assets/stylesheets \
+         --output public/assets \
+         application.js application.css
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Serving over HTTP</h2>
+
+                        <pre><code>
+var connect = require('connect');
+var Mincer  = require('mincer');
+
+var environment = new Mincer.Environment();
+environment.appendPath('app/assets/javascripts');
+environment.appendPath('app/assets/stylesheets');
+
+var app = connect();
+app.use('/assets', Mincer.createServer(environment));
+app.use(function (req, res) {
+    // your application here...
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Program access</h2>
+
+                        <pre><code>
+var asset = environment.findAsset('application.js');
+
+asset.toString(); // resulting contents
+asset.length;     // length in bytes
+asset.mtime;      // last modified time
+asset.pathname;   // full path on the filesystem
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="https://github.com/nodeca/mincer">Home / Github</a></h3>
+                        <h3><a href="http://nodeca.github.io/mincer/">Docs</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Mincer is truly a gift to all Ruby fans! <br/>
+                            For all non-familiar-with-Ruby developers though it may provide a tough experience
+                        </blockquote>
+                    </section>
+
+				</section>
+				<!-- /Mincer-->
+
+
+				<!-- Broccoli -->
+				<section class="background-odd" id="broccoli">
+                    <section>
+                        <h2>Broccoli</h2>
+
+                        <img width="250" src="img/broccoli.png" alt="Broccoli"/>
+
+                        <blockquote>
+                            Broccoli.js – The asset pipeline for ambitious applications.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://broccolijs.com/">Home</a></h3>
+                        <h3><a href="https://github.com/broccolijs/broccoli">Docs / Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Less code is more</li>
+                            <li>Use separately or on it's own</li>
+                            <li>Fast! <span class="fragment fade highlight-green">(cuz, um... trees)</span></li>
+                            <li><a href="https://www.npmjs.com/browse/keyword/broccoli-plugin">Plugin ecosystem</a></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install --save-dev broccoli
+npm install --global broccoli-cli
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Brocfile.js</h2>
+
+                        <pre><code>
+var concat = require('broccoli-concat'),
+pickFiles = require('broccoli-static-compiler'),
+mergeTrees = require('broccoli-merge-trees');
+
+// concat the JS
+var scripts = concat('app/', {
+inputFiles: ['**/*.js'],
+outputFile: '/assets/scripts.js'
+});
+
+// concat the CSS
+var styles = concat('app/styles', {
+inputFiles: ['**/*.css'],
+outputFile: '/assets/styles.css'
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Brocfile.js (continued)</h2>
+
+                        <pre><code>
+// grap any static assets
+var public = pickFiles('public', {
+srcDir: '.',
+destDir: '.'
+});
+
+// and merge all the trees together
+module.exports = mergeTrees([scripts, styles, public]);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Broccoli defines a single plugin API: a tree</h3>
+
+                        <strong class="fragment"><img src="img/broccoli-ex-1.jpg" alt="Broccoli"/></strong>
+
+                        <h4 class="fragment">
+                            A tree object represents a tree (directory hierarchy) of files <br/>
+                            that will be regenerated on
+                            <span class="fragment highlight-red">each build</span>
+                        </h4>
+
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li>It is still <strong>beta</strong></li>
+                            <li>Windows support is buggy</li>
+                            <li>Low community support</li>
+                            <li>Lack of documentation so far</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Inspired by Rails asset pipeline, Broccoli offers backend-agnostic functionality with NodeJS
+                            <br/>
+                            If you need <i class="fragment highlight-blue">for speed</i> (perhaps on complex project), you should give it a try!
+                        </blockquote>
+                    </section>
+
+				</section>
+				<!-- /Broccoli-->
+
+
+				<!-- *ake -->
+                <!--
+				<section class="background-odd">
+
+					<section>
+						<h2>*ake</h2>
+
+						<h3 class="fragment roll-in">Jake</h3>
+						<h3 class="fragment roll-in">Cake</h3>
+						<h3 class="fragment roll-in">Make</h3>
+						<h3 class="fragment roll-in">Rake</h3>
+						<h3 class="fragment roll-in">
+							<img width="150" src="img/fake.jpg" alt="FAKE"/>
+							<del>Fake</del>
+						</h3>
+					</section>
+
+
+					<section>
+						<h2>Make</h2>
+
+
+
+					</section>
+
+
+					<section>
+						<h2>Rake</h2>
+
+
+
+					</section>
+
+
+					<section>
+						<h2>Jake</h2>
+
+						<img width="250" src="img/jake.png" alt="Jake"/>
+
+					</section>
+
+
+					<section>
+						<h2>Cake</h2>
+
+						<ul>
+							<li>Coffescript</li>
+						</ul>
+
+					</section>
+
+				</section>
+				-->
+				<!-- /*ake-->
+
+
+                <section>
+                    <h1>Make/Rake/Jake/Cake</h1>
+                </section>
+
+                <section data-background="img/sorry.png">
+                    <h1 class="fragment roll-in background">Sowwwy!</h1>
+                </section>
+
+
+				<!-- Build systems -->
+				<!-- ---------------------------------------------------------------------------------------------- -->
+
+				<section class="background-splash">
+					<h1>Build systems / Generators</h1>
+					<h2 class="fragment roll-in">
+						<a href="http://staticgen.com">staticgen.com</a>
+					</h2>
+                    <h3 class="fragment roll-in">JS-based generators only!</h3>
+				</section>
+
+				<section class="background-splash">
+					<strong><img height="600" src="img/staticgen.PNG" alt="Staticgen"/></strong>
+				</section>
+
+
+				<!-- Wintersmith -->
+				<section class="background-even" id="wintersmith">
+					<section>
+					    <img width="350" src="img/wintersmith.svg" alt="Wintersmith"/>
+
+					    <blockquote>
+                            Flexible, minimalistic, multi-platform static site generator built on top of node.js
+					    </blockquote>
+					</section>
+
+					<section>
+					    <h2>Links</h2>
+
+					    <h3><a href="http://wintersmith.io/">Home</a></h3>
+					    <h3><a href="http://wintersmith.io/docs/">Docs</a></h3>
+					    <h3><a href="https://github.com/jnordberg/wintersmith">Github</a></h3>
+					</section>
+
+					<section>
+					    <h2>Features</h2>
+					    <ul>
+					        <li>Simple directory structure</li>
+					        <li>Markdown support</li>
+					        <li>Browserify out of the box</li>
+					        <li><a href="https://github.com/jnordberg/wintersmith/wiki/Plugins">Plugin</a>-based</li>
+					        <li>CLI</li>
+					    </ul>
+					</section>
+
+					<section>
+					    <h2>Easy start</h2>
+
+					    <pre><code>
+npm install wintersmith -g
+wintersmith new [project]
+
+cd [project]
+wintersmith preview
+wintersmith build
+					    </code></pre>
+					</section>
+
+                    <section>
+                        <h2>How it works</h2>
+
+                        <p>A wintersmith site is built up of three main components: contents, views and templates</p>
+
+                        <strong><img src="img/wintersmith-ex-1.svg" alt="Wintersmith process"/></strong>
+                    </section>
+
+					<section>
+					    <h2>Cons</h2>
+					    <ul>
+					        <li>Coffescript everywhere</li>
+					        <li>More examples needed</li>
+					        <li>No assets optimisation</li>
+					    </ul>
+					</section>
+
+					<section>
+					    <h2>Conclusion</h2>
+
+					    <blockquote>
+                            Wintersmith is definitely the right choice if you are into Coffescript, Jade and have some background with Jekyll.
+                            <br/>
+                            It allows to build <a href="https://github.com/jnordberg/wintersmith/wiki/Showcase">static site or simple blog</a>, but requires some developing skills
+					    </blockquote>
+					</section>
+				</section>
+				<!-- /Wintersmith -->
+
+
+				<!-- Punch -->
+				<section class="background-even" id="punch">
+                    <section>
+                        <h2>Punch</h2>
+
+                        <img width="400" src="img/punch.png" alt="Punch"/>
+
+                        <blockquote>
+                            Punch is a simple, intuitive web publishing framework that will delight both designers and developers
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://laktek.github.io/punch/">Home</a></h3>
+                        <h3><a href="https://github.com/laktek/punch/wiki">Docs</a></h3>
+                        <h3><a href="https://github.com/laktek/punch">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Templates of your choice</li>
+                            <li>Markdown support</li>
+                            <li>Optional preprocessing (css/js)</li>
+                            <li>Easy publishing</li>
+                            <li>1 config file</li>
+                            <li>CLI</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+                        <pre><code>
+# Install Punch
+npm install -g punch
+
+# Create your site
+punch setup mysite
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+
+                        <ul>
+                            <li>Wiki: <q>Lakshan Perera edited this page on 25 Sep 2012</q></li>
+                            <li>2 boilerplates</li>
+                            <li>Short choice of plugins</li>
+                            <li>Poor community and support</li>
+                            <li>Integrated dev environment</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Punch.io is nice tool to use for small sites or blogs,
+                            if you don't want to mess with Grunt or Gulp and other tech magic.
+                            <br/>
+                            <br/>
+                            Best thing to do - use it "as is"
+                        </blockquote>
+
+                    </section>
+
+				</section>
+				<!-- /Punch -->
+
+
+				<!-- Assemble -->
+				<section class="background-even" id="assemble">
+                    <section>
+                        <h2>Assemble</h2>
+
+                        <img width="250" src="img/assemble.png" alt="Assemble"/>
+                    </section>
+
+                    <section>
+                        <blockquote>
+                            Static site generator for Grunt.js, Yeoman and Node.js. Used by Zurb Foundation, Zurb Ink, H5BP/Effeckt, Less.js / lesscss.org, Topcoat, Web Experience Toolkit, and hundreds of other projects to build sites, themes, components, documentation, blogs and gh-pages.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://assemble.io/">Home</a></h3>
+                        <h3><a href="http://assemble.io/docs/">Docs</a></h3>
+                        <h3><a href="https://github.com/assemble/assemble/">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Great community and support</li>
+                            <li>Tons of plugins</li>
+                            <li><del>Grunt integration</del></li>
+                            <li>Gulp-style syntax</li>
+                            <li>Actively maintained</li>
+                            <li>Markdown support</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+						<div><code>
+							assemblefile.js
+						</code></div>
+
+                        <pre><code>
+var assemble = require('assemble');
+var less = require('gulp-less');
+
+assemble.task('html', function() {
+assemble.src('templates/*.hbs')
+    .pipe(assemble.dest('dist/'));
+});
+
+assemble.task('default', ['html']);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+
+                        <ul>
+                            <li>Deep Handlebars addiction</li>
+                            <li>Still needed some modules</li>
+                            <li><i>Partial</i> docs inconsistency</li>
+                            <li>Opinionated development</li>
+                            <li>(not so easy) Start</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Assemble.io shows it's best in delivering documentation presentation using numbers of similar pages.
+                            <br/>
+                            Having somehow different structure may lead to surprises in development.
+                            <br/>
+                            Requires time to get into
+                        </blockquote>
+
+                    </section>
+
+				</section>
+				<!-- /Assemble -->
+
+
+				<!-- Metalsmith -->
+				<section class="background-even" id="metalsmith">
+                    <section>
+                        <h2>Metalsmith</h2>
+
+                        <img width="250" src="img/metalsmith.png" alt="Metalsmith"/>
+						<div class="fragment roll-in">
+							<i><small>(not real logo)</small></i>
+						</div>
+
+                        <blockquote>
+                            An extremely simple, <i>pluggable</i> static site generator.
+                        </blockquote>
+
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://www.metalsmith.io/">Home/Docs</a></h3>
+                        <h3><a href="https://github.com/segmentio/metalsmith">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Vast community</li>
+                            <li>Great support</li>
+                            <li>JS API / CLI</li>
+                            <li>Great docs and examples</li>
+                            <li>Pluggable structure</li>
+                            <li>Tons of plugins</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>There is a Secret...</h2>
+
+                        <strong><img src="img/secret.jpg" width="50%" alt="Secret"/></strong>
+                    </section>
+
+                    <section>
+                        <h2 class="fragment fade-out"><del>Victoria Secret</del></h2>
+                        <h2 class="fragment roll-in"><span>Metalsmith</span> Secret</h2>
+                        <blockquote class="fragment roll-in">
+                            Since everything is a plugin, the core library is actually just an abstraction for manipulating a directory of files.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install metalsmith
+                        </code></pre>
+
+						<h3 class="fragment roll-in">Let's code...</h3>
+                    </section>
+
+					<section>
+						<h3>...static site</h3>
+
+						<div><code>
+							metalsmith.json
+						</code></div>
+
+						<div class="cols">
+							<div class="col">
+								<strong>
+									<img src="img/metalsmith-ex-1.png" alt="Metalsmith Example 1"/>
+								</strong>
+							</div>
+							<div class="col">
+								<pre><code>
+{
+  "metadata": {
+    "title": "My Blog",
+    "description": "My second, super-cool blog."
+  },
+  "plugins": {
+    "metalsmith-markdown": {},
+    "metalsmith-permalinks": {
+      "pattern": ":title"
+    },
+    "metalsmith-templates": {
+      "engine": "handlebars"
+    }
+  }
+}
+								</code></pre>
+							</div>
+						</div>
+
+					</section>
+
+					<section>
+						<h3>...build tool</h3>
+
+						<div><code>
+							build.js
+						</code></div>
+
+						<div class="cols">
+							<div class="col">
+								<strong>
+									<img src="img/metalsmith-ex-2.png" alt="Metalsmith Example 1"/>
+								</strong>
+							</div>
+							<div class="col">
+								<pre><code>
+var async = require('async');
+var Metalsmith = require('metalsmith');
+var prompt = require('cli-prompt');
+var render = require('consolidate').handlebars.render;
+
+var metalsmith = Metalsmith(__dirname)
+	.use(ask)
+	.use(template)
+	.build(function(err){
+		if (err) throw err;
+	});
+								</code></pre>
+							</div>
+						</div>
+
+					</section>
+
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li><strong>Pluggable structure</strong></li>
+                            <li><strong>Tons of plugins</strong></li>
+                            <li>(not so easy) Start</li>
+                            <li>Questionable selection of tool</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Origins</h2>
+
+						<p>Metalsmith is brought to you by...</p>
+						<div class="fragment roll-in">
+							<img src="img/segment.png" width="100" alt="Segment"/>
+							<h2>Segment</h2>
+						</div>
+						<div class="fragment roll-in">
+							<h3><a href="https://github.com/segmentio">Github</a></h3>
+							<h3><a href="https://segment.com/">Homepage</a></h3>
+						</div>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Great idea of atomic structure allows familiar piping pattern to generate a site... or build docs... or <del>launch a rocket</del><br/>
+                            In some ways, though, it could be considered an unnecessary complexity of some sort
+                        </blockquote>
+
+                    </section>
+
+				</section>
+				<!-- /Metalsmith -->
+
+
+				<!-- Hexo -->
+				<section class="background-even" id="hexo">
+
+					<section>
+						<h2>Hexo</h2>
+
+                        <img width="250" src="img/hexo.svg" alt="Hexo"/>
+
+						<blockquote>
+							A fast, simple & powerful blog framework
+						</blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="https://hexo.io/">Home</a></h3>
+                        <h3><a href="https://hexo.io/docs/">Docs</a></h3>
+                        <h3><a href="https://github.com/hexojs/hexo">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Blogger-ready solution</li>
+                            <li>One-command deploy to Github, Heroku,...</li>
+                            <li>Markdown/<a href="http://octopress.org/">Octopress</a> support</li>
+                            <li>Various plugins</li>
+                            <li>Themes support</li>
+                            <li>Great community and maintaining</li>
+                            <li>CLI</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <pre><code>
+npm install hexo-cli -g
+hexo init blog
+cd blog
+npm install
+hexo server
+                        </code></pre>
+                    </section>
+
+					<section>
+						<h3>Support</h3>
+						<div><a href="https://hexo.io/docs/generating.html">https://hexo.io/docs/generating.html</a></div>
+						<strong><img src="img/hexo-example.png" alt="Hexo Support"/></strong>
+					</section>
+
+                    <section>
+                        <h2>Cons</h2>
+						<div class="fragment roll-in">After all these years</div>
+						<div class="fragment roll-in">Hexo is still incapable</div>
+						<div class="fragment roll-in">of making Shepherd's pie</div>
+                    </section>
+
+					<section data-background-image="img/kidding.jpg">
+					</section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+							Hexo is a right tool to use if you are totally aware of what you doing (<i>blogging</i>)
+                        </blockquote>
+
+                    </section>
+
+				</section>
+
+				<section class="background-splash">
+					<h2>There's more!</h2>
+                    <p><i>(blogging generators)</i></p>
+
+					<h3 class="fragment roll-in"><a href="http://hubpress.io/">Hubpress.io</a></h3>
+					<h3 class="fragment roll-in"><a href="https://github.com/creationix/wheat">Wheat</a></h3>
+					<h3 class="fragment roll-in"><a href="http://jsantell.github.io/poet/">Poet</a></h3>
+                    <h3 class="fragment roll-in"><a href="https://github.com/isnowfy">Simple</a></h3>
+                    <h3 class="fragment roll-in"><a href="http://www.cabinjs.com/">Cabin</a></h3>
+				</section>
+
+                <section class="background-splash">
+                    <h2>There's less!</h2>
+                    <p><i>(due to maintaining reasons)</i></p>
+
+                    <h3 class=""><a href="http://hubpress.io/">Hubpress.io</a></h3>
+                    <h3 class="fragment fade-out"><a href="https://github.com/creationix/wheat">Wheat</a></h3>
+                    <h3 class="fragment fade-out"><a href="http://jsantell.github.io/poet/">Poet</a></h3>
+                    <h3 class="fragment fade-out"><a href="https://github.com/isnowfy">Simple</a></h3>
+                    <h3 class="fragment fade-out"><a href="http://www.cabinjs.com/">Cabin</a></h3>
+                </section>
+				<!-- /Hexo -->
+
+
+				<!-- Mimosa -->
+				<section class="background-even" id="mimosa">
+                    <section>
+                        <h2><img width="350" src="img/mimosa.png" alt="Mimosa"/></h2>
+
+                        <blockquote>
+                            a build tool for modern web development
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://mimosa.io/">Home/Docs</a></h3>
+                        <h3><a href="https://github.com/dbashford/mimosa/">Github</a></h3>
+                        <h3><a href="http://dbashford.github.io/">Creator' Blog</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Mimosa contro tutti</h2>
+
+                        <h3 class="fragment roll-in">
+                            <a href="http://dbashford.github.io/mimosa-vs-the-others/index.html">Mimosa vs Grunt / Gulp / Broccoli</a>
+                        </h3>
+
+                        <div class="fragment fade">
+                            <strong><img src="img/contro.jpg" alt="Contro Tutti"/></strong>
+                        </div>
+                    </section>
+
+                    <section data-transition="zoom">
+                        <h2>Mimosa blows away the competition for<br/><span class="fragment highlight-red">ease of use</span></h2>
+
+                        <blockquote class="fragment roll-in">
+                            The more time spent looking at config, the more time spent understanding it, and playing with it, then the less time is spent actually writing code.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li><q>Limits I/O, so It Is Fast</q> (Mimosa reads and writes once)</li>
+                            <li>Module based (many of them)</li>
+                            <li>One config to rule them all</li>
+                            <li>Testing integration</li>
+                            <li class="fragment">And...</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>User-friendliest CLI ever!</h2>
+                        <strong><img src="img/mimosa-ex-1.png" alt="Mimosa CLI"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <p><a href="http://mimosa.io/started.html">Start Here</a></p>
+
+                        <pre><code>
+npm install -g mimosa
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Init project</h2>
+
+                        <pre><code>
+mimosa new [applicationName]
+                        </code></pre>
+
+                        or
+
+                        <pre><code>
+mimosa skel:list
+skel:new [nameOfSkeleton] [directory]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Or add Mimosa to existing app</h2>
+
+                        <div class="fragment roll-in">Create <code>mimosa-config.js</code></div>
+                        <div class="fragment roll-in">
+                            Tweak the config
+                            <pre><code>
+exports.config = {
+    "modules": []
+}
+                            </code></pre>
+                        </div>
+                        <div class="fragment roll-in">
+                            Enjoy!
+                             <pre><code>
+mimosa watch
+                             </code></pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+
+                        <ul>
+                            <li>Influenced by [frameworks]</li>
+                            <li>Complex structure</li>
+                            <li>Not for novices</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Mimosa is the project, absolutely worth seeing and giving a try!<br/>
+                            It is too complex for plain structured static sites, but definitely will shine in application development.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Extra</h2>
+
+                        <p>More from the author and maintainer:</p>
+                        <h3 class="fragment roll-in"><a href="https://github.com/dbashford/textract">Textract</a></h3>
+
+                        <blockquote class="fragment roll-in">
+                            Extracting text from files of various type including html, pdf, doc, docx, xls, xlsx, pptx, png, jpg, gif, rtf, text/*.
+                        </blockquote>
+
+                        <ul class="fragment roll-in">
+                            <li>~450 Github stars</li>
+                            <li>~400 downloads in the last month</li>
+                        </ul>
+
+                    </section>
+
+				</section>
+				<!-- /Mimosa -->
+
+
+				<!-- HarpJS -->
+				<section class="background-even" id="harp">
+
+                    <section>
+                        <img width="250" src="img/harp.svg" alt="Hexo"/>
+
+                        <blockquote>
+                            The static web server with built-in preprocessing.
+                            <br/>
+                            <p>
+                                Harp serves Jade, Markdown, EJS, CoffeeScript, Sass, LESS and Stylus as HTML, CSS & JavaScript—no configuration necessary.
+                            </p>
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://harpjs.com/">Home</a></h3>
+                        <h3><a href="http://harpjs.com/docs/">Docs</a></h3>
+                        <h3><a href="https://github.com/sintaxi/harp">Github</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>CLI</li>
+                            <li>Auto preprocessing (<q>focus on writing instead of wrangling</q>)</li>
+                            <li>Familiar approach with Express</li>
+                            <li>Compile and deploy to GitHub, Heroku,...</li>
+                            <li>Use as asset pipeline</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>
+                            <div class="fragment roll-in">We</div>
+                            <div class="fragment roll-in">Want</div>
+                        </h3>
+                        <div class="fragment roll-in"><img width="60%" src="img/moar.jpg" alt="Moar!"/></div>
+                    </section>
+
+                    <section>
+                        <h2>Moar</h2>
+                        <h3>Still out-of-box!</h3>
+                        <ul>
+                            <li>Multihosting</li>
+                            <li>404 page</li>
+                            <li>Basic authentication</li>
+                            <li>Nice and clear docs</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2><a href="https://www.harp.io/">Harp <small>platform</small></a></h2>
+                        <blockquote>
+                            Effortless web publishing through Dropbox
+                        </blockquote>
+                        <strong><img src="img/harp-ex-2.png" alt="Harp Example 2"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>(Very) Easy start</h2>
+
+                        <pre><code>
+npm install -g harp
+harp init myproject
+harp server myproject
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Welcome to Harp</h2>
+
+                        <div><code>
+                            ./myproject
+                        </code></div>
+                        <strong><img src="img/harp-ex-1.png" alt="Harp Example 1"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Build!</h2>
+                        <pre><code>
+harp compile
+                        </code></pre>
+                        <strong><img src="img/harp-ex-3.png" alt="Harp Example 1"/></strong>
+                    </section>
+                    
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li>No "browser-sync"</li>
+                            <li>Custom preprocessing</li>
+                            <li>Choice limited to LESS, SASS, Stylus, Coffescript</li>
+                            <li>and EJS + Jade for templating</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            HarpJS is a solid ready-to-use solution for <span class="fragment highlight-current-red">building</span>/<span class="fragment highlight-red">serving</span> regular static sites. <br/>
+                            It is also possible to use it as blogging platform <br/>
+                            Do not expect something extraordinary though, it is perfect when used as intended.
+                        </blockquote>
+
+                    </section>
+
+				</section>
+				<!-- /HarpJS -->
+
+
+				<!-- Special -->
+				<!-- ---------------------------------------------------------------------------------------------- -->
+
+				<section class="background-splash">
+
+					<section>
+						<h2>
+							Let's talk about
+						</h2>
+					</section>
+
+					<section data-background-transition="fade" data-background-image="img/special.jpg">
+					</section>
+
+					<section data-transition="convex">
+						<h1>Specials</h1>
+
+						<div class="fragment">
+							<q>Nothing wrong with these guys, <br/>they just don't quite fit the categories</q>
+						</div>
+					</section>
+
+				</section>
+
+
+				<!-- Yeoman -->
+				<section class="background-odd" id="yeoman">
+                    <section>
+                        <h2>Yeoman</h2>
+
+                        <img width="250" src="img/yeoman.png" alt="Yeoman"/>
+
+                        <blockquote>
+                            The Web's scaffolding tool for modern webapps
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://yeoman.io/">Home</a></h3>
+                        <h3><a href="http://yeoman.io/learning/">Docs</a></h3>
+                        <h3><a href="https://github.com/yeoman/yeoman">Github</a></h3>
+                        <h3><a href="https://github.com/yeoman">Moar from the contributors</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>What the Yo?</h2>
+                        <strong><img src="img/yeoman-ex-1.jpg" alt="Yeoman Workflow"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>What <img src="img/yeoman.png" width="80" alt="Yeoman mini"/> is <u>NOT</u></h2>
+
+                        <p class="fragment roll-in">
+                            a <strong>task-runner</strong><br/>
+                            instead - it utilizes the power of Grunt and Gulp!
+                        </p>
+                        <p class="fragment roll-in">
+                            a <strong>one-framework solution</strong><br/>
+                            the direction of development implies <a
+                                href="http://yeoman.io/learning/faq.html#yeoman-vs-builders">multiple framework support</a>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>All-in-one solution for scaffolding</li>
+                            <li>Great docs and support</li>
+                            <li>Write your own <a href="http://yeoman.io/authoring/">generator</a></li>
+                            <li>Or <a href="http://yeoman.io/generators/">pick one</a> for your needs (~1700)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Top 10 popular generators</h2>
+                        <strong><img src="img/yeoman-ex-2.png" alt="Yeoman top 10"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <h3>Prerequisites</h3>
+                        <pre><code>
+npm install -g yo bower grunt-cli gulp
+                        </code></pre>
+
+                        <h3>Via generator</h3>
+                        <pre><code>
+npm install -g generator-webapp
+yo webapp [--param]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Awesome CLI</h2>
+                        <p><i>(only used on project init)</i></p>
+                        <strong><img width="70%" src="img/yeoman-ex-3.png" alt="Yeoman CLI"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Gulp/Grunt/Whatever</h2>
+
+                        <div class="cols">
+                            <div class="col">
+                                <h3>Gulp</h3>
+                                <pre><code>
+yo webapp
+gulp serve
+gulp test
+gulp
+                                </code></pre>
+                            </div>
+                            <div class="col">
+                                <h3>Grunt</h3>
+                                <pre><code>
+yo webapp
+grunt serve
+grunt test
+grunt
+                                </code></pre>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li>Opinionated structure</li>
+                            <li>Heavy usage causes yo-addiction (use with care)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Yeoman is a brilliant tool for starters, digging into the webapp development world. <br/>
+                            On the other hand, <strong>yo</strong> keeps you away from scaffolding, offering opinionated structure from the very start.
+                        </blockquote>
+                    </section>
+
+				</section>
+				<!-- /Yeoman -->
+
+
+				<!-- Mixture -->
+				<section class="background-odd" id="mixture">
+                    <section>
+                        <h2>Mixture</h2>
+
+                        <img width="250" src="img/mixture.svg" alt="Mixture"/>
+
+                        <blockquote>
+                            A rapid front-end development toolset for Mac & Windows.
+                            <br/>
+                            Focus on the build not the setup.
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2>Links</h2>
+
+                        <h3><a href="http://mixture.io/">Home</a></h3>
+                        <h3><a href="http://docs.mixture.io/">Docs</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Can I haz Github?</h2>
+                        <strong class="fragment roll-in">
+                            <img width="30%" src="img/no.jpeg" alt="No!"/>
+                        </strong>
+                    </section>
+
+                    <section data-transition="convex">
+                        <strong><img width="50%" src="img/no2.jpg" alt="No!"/></strong>
+                    </section>
+
+                    <section>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Boilerplates - Bootstrap, Foundation & Sassaprilla</li>
+                            <li>Preprocessing</li>
+                            <li>Multi-device testing</li>
+                            <li>Publishing to Github and Amazon</li>
+                            <li>Integratable into workflow (simple mode)</li>
+                            <li class="fragment">...and all this</li>
+                        </ul>
+                    </section>
+
+                    <section data-background="img/mixture-ex-1.png" data-background-transition="zoom">
+                        <h1 class="background">Is the App!</h1>
+                    </section>
+
+                    <section>
+                        <h2>Easy start</h2>
+
+                        <strong>
+                            <a href="http://mixture.io/#download">
+                                <img src="img/mixture-ex-2.png" alt="Mixture download"/>
+                            </a>
+                        </strong>
+                    </section>
+
+                    <section>
+                        <h2>What you get?</h2>
+
+                        <strong><img src="img/mixture-ex-3.png" alt="Mixture project"/></strong>
+                    </section>
+                    
+                    <section>
+
+                        <h3>All processes happen in the blackbox</h3>
+
+                        <p>
+                            Preprocessing, templating, building, minification, combining, optimisation, linting, data processing, ...
+                        </p>
+
+                        <h3 class="fragment fade">So...</h3>
+                    </section>
+
+                    <section data-background="img/justworks.jpg"></section>
+
+                    <section>
+                        <h2>Cons</h2>
+                        <ul>
+                            <li>Low control over environment</li>
+                            <li>Opinionated structure</li>
+                            <li><a href="https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!forum/teammixture">Questionable</a> support</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+
+                        <blockquote>
+                            Mixture offers all-in-one suite application for modern approach to static sites development<br/>
+                            It will never bother you with Grunt-Gulp-Webpack-Browserification.
+                            <br/>
+                            <br/>
+                            Swift start for non-developers!
+                        </blockquote>
+                    </section>
+				</section>
+				<!-- /Mixture -->
+
+
+				<!-- Wrapping up -->
+				<!-- ---------------------------------------------------------------------------------------------- -->
+
+                <section class="background-splash">
+                    <h1>Wrapping up</h1>
+                </section>
+
+                <section data-background="img/wrapping-1.jpg">
+                </section>
+
+                <section data-background="img/wrapping-2.jpg">
+                </section>
+
+				<section>
+					<h1>Thank you!</h1>
+
+                    <h2 class="fragment roll-in">Questions?</h2>
+				</section>
+
+
+                <!-- The Last slide -->
+                <!-- ---------------------------------------------------------------------------------------------- -->
+                <!--
+                <section id="cheat" class="background-splash">
+                    <h2>Speaker cheat-sheet</h2>
+                    <hr/>
+                    <div class="cols">
+                        <div class="col"><h3><a href="#grunt">Grunt</a></h3></div>
+                        <div class="col"><h3><a href="#gulp">Gulp</a></h3></div>
+                        <div class="col"><h3><a href="#brunch">Brunch</a></h3></div>
+                        <div class="col"><h3><a href="#broccoli">Broccoli</a></h3></div>
+                        <div class="col"><h3><a href="#mincer">Mincer</a></h3></div>
+                        <div class="col"><h3><a href="#wintersmith">Wintersmith</a></h3></div>
+                        <div class="col"><h3><a href="#punch">Punch</a></h3></div>
+                        <div class="col"><h3><a href="#assemble">Assemble</a></h3></div>
+                        <div class="col"><h3><a href="#metalsmith">Metalsmith</a></h3></div>
+                        <div class="col"><h3><a href="#hexo">Hexo</a></h3></div>
+                        <div class="col"><h3><a href="#mimosa">Mimosa</a></h3></div>
+                        <div class="col"><h3><a href="#harp">Harp</a></h3></div>
+                        <div class="col"><h3><a href="#yeoman">Yeoman</a></h3></div>
+                        <div class="col"><h3><a href="#mixture">Mixture</a></h3></div>
+                    </div>
+                </section>
+                -->
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
